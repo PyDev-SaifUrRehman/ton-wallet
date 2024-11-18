@@ -33,10 +33,13 @@ export async function addTokens(tokens: ApiToken[], onUpdate?: OnApiUpdate, shou
 }
 
 export function getTokensCache() {
+ 
+
   return tokensCache;
 }
 
 export function getTokenBySlug(slug: string) {
+  // console.log("token cache loaded", getTokensCache()["slug"]);
   return getTokensCache()[slug];
 }
 
@@ -69,5 +72,6 @@ export function sendUpdateTokens(onUpdate: OnApiUpdate) {
 
 export function buildTokenSlug(chain: ApiChain, address: string) {
   const addressPart = address.replace(/[^a-z\d]/gi, '').slice(0, 10);
+  // console.log("token cache loaded", addressPart);
   return `${chain}-${addressPart}`.toLowerCase();
 }

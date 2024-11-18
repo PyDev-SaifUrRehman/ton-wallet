@@ -189,6 +189,8 @@ function Assets({
       ? `position: absolute; top: ${(viewportIndex + indexInViewport) * TOKEN_HEIGHT_REM}rem`
       : undefined;
 
+      console.log("hello token is :", indexInViewport)
+
     return (
       <Token
         classNames="token-list-item"
@@ -225,7 +227,8 @@ function Assets({
       {shouldShowGreeting && <NewWalletGreeting key="new-wallet-greeting" isActive={isActive} mode="panel" />}
       {shouldRenderVestingToken && renderVestingToken()}
       {shouldRenderStakedToken && renderStakedToken()}
-      {viewportSlugs?.map((tokenSlug, i) => renderToken(tokensBySlug![tokenSlug], i))}
+      {/* {console.log("render token is ", viewportSlugs)} */}
+      {viewportSlugs?.filter(val => val != "tron-tr7nhqjekq" && val != "trx")?.map((tokenSlug, i) => renderToken(tokensBySlug![tokenSlug], i))}
     </InfiniteScroll>
   );
 }
